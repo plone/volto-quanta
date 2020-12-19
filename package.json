@@ -1,0 +1,29 @@
+{
+	"name": "@plone/volto-quanta",
+	"version": "1.0.0",
+	"description": "Quanta Design System - Volto package",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/plone/volto-quanta.git"
+	},
+	"keywords": [
+		"quanta",
+		"volto",
+		"addon",
+		"design",
+		"guide"
+	],
+	"author": "Victor Fernandez de Alba",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/plone/volto-quanta/issues"
+	},
+	"homepage": "https://github.com/plone/volto-quanta#readme",
+	"dependencies": {
+		"theme-ui": "0.6.0-alpha.3"
+	}
+}
