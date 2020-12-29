@@ -1,20 +1,34 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
+import PropTypes from 'prop-types';
 import { Box, Input as ThemeUIInput } from 'theme-ui';
 
 const REQUIREDSVG =
   '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23f54e38" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>';
 
 const Input = (props) => {
+  const {
+    description,
+    disabled,
+    error,
+    fieldSet,
+    id,
+    placeholder,
+    title,
+    variant,
+  } = props;
+
   return (
     <Box
       sx={{
         position: 'relative',
+        mt: 30,
         'input:focus~label, input:not(:placeholder-shown)~label': {
           transform: 'scale(.8) translateY(-3.3rem) translateX(-.75rem)',
         },
         'input:not(:placeholder-shown):not(:hover):not(:active):not(:focus)~label': {
-          color: 'greyPidgeon',
+          color: (theme) =>
+            (error.length > 0 && theme.forms.errored.color) || 'greyPidgeon',
         },
         'input::placeholder': {
           opacity: 0,
@@ -37,22 +51,39 @@ const Input = (props) => {
       }}
     >
       <ThemeUIInput
+        className="quanta input"
         sx={{
           '&:hover': {
-            backgroundColor: (theme) => theme.forms.hovered.backgroundColor,
+            backgroundColor: (theme) =>
+              error.length > 0
+                ? theme.forms.errored.hoverColor
+                : theme.styles.input.hovered.backgroundColor,
           },
           '&:focus': {
-            borderColor: (theme) => theme.forms.focused.borderColor,
-            outlineColor: (theme) => theme.forms.focused.borderColor,
-            backgroundColor: (theme) => theme.forms.focused.backgroundColor,
+            borderColor: (theme) =>
+              error.length > 0
+                ? theme.forms.errored.focusBorderColor
+                : theme.styles.input.focused.borderColor,
+            outlineColor: (theme) =>
+              error.length > 0
+                ? theme.forms.errored.focusBorderColor
+                : theme.styles.input.focused.borderColor,
+            backgroundColor: (theme) =>
+              theme.styles.input.focused.backgroundColor,
           },
         }}
-        variant={props.disabled ? 'disabled' : props.variant || 'input'}
-        placeholder={props.placeholder || ' '}
+        variant={
+          (disabled && 'disabled') ||
+          (error.length > 0 && 'errored') ||
+          variant ||
+          'input'
+        }
+        id={`field-${id}`}
+        placeholder={placeholder || ' '}
         {...props}
       />
       <label
-        htmlFor={props.id}
+        htmlFor={`field-${id}`}
         sx={{
           position: 'absolute',
           fontSize: '14px',
@@ -61,9 +92,9 @@ const Input = (props) => {
           fontWeight: '500',
           background: 'transparent',
           color: (theme) =>
-            props.disabled
-              ? theme.forms.disabled.color
-              : theme.forms.label.color,
+            (disabled && theme.forms.disabled.color) ||
+            (error.length > 0 && theme.forms.errored.color) ||
+            theme.forms.label.color,
           left: '.75rem',
           top: 'calc(.5rem + 6px)',
           maxWidth: 'calc(100% - 1.5rem)',
@@ -72,19 +103,77 @@ const Input = (props) => {
           transition: 'transform .15s cubic-bezier(.4,0,.2,1)',
         }}
       >
-        {props.id}
+        {title}
       </label>
+      {error &&
+        error.map((message) => (
+          <p
+            key={message}
+            sx={{
+              fontSize: 0,
+              color: (theme) => theme.forms.errored.color,
+              my: 1,
+            }}
+          >
+            {message}
+          </p>
+        ))}
       <p
         sx={{
           fontSize: 0,
-          color: props.disabled ? 'greySilver' : 'greyPidgeon',
-          mt: 1,
+          color: (theme) =>
+            disabled
+              ? theme.forms.disabled.color
+              : theme.styles.input.help.color,
+          my: 1,
         }}
       >
-        {props.description}
+        {description}
       </p>
     </Box>
   );
+};
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  required: PropTypes.bool,
+  error: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
+  focus: PropTypes.bool,
+  onChange: PropTypes.func,
+  onBlur: PropTypes.func,
+  onClick: PropTypes.func,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func,
+  icon: PropTypes.shape({
+    xmlns: PropTypes.string,
+    viewBox: PropTypes.string,
+    content: PropTypes.string,
+  }),
+  iconAction: PropTypes.func,
+  minLength: PropTypes.number,
+  maxLength: PropTypes.number,
+  wrapped: PropTypes.bool,
+  placeholder: PropTypes.string,
+};
+
+Input.defaultProps = {
+  description: null,
+  required: false,
+  error: [],
+  value: null,
+  onChange: () => {},
+  onBlur: () => {},
+  onClick: () => {},
+  onEdit: null,
+  onDelete: null,
+  focus: false,
+  icon: null,
+  iconAction: null,
+  minLength: null,
+  maxLength: null,
 };
 
 export default Input;

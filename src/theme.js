@@ -20,6 +20,10 @@ export default {
     text: '#000',
     background: '#fff',
     primary: '#33e',
+    redBallet: '#FEE9E7',
+    redCandy: '#D0220B',
+    redFlamingo: '#FCD0CA',
+    redRose: '#F54E38',
     greySnow: '#F3F5F7',
     greyDolphin: '#8296A6',
     greyPidgeon: '#617789',
@@ -43,22 +47,18 @@ export default {
       padding: '11px 8px',
       lineHeight: '24px',
     },
-    hovered: {
-      variant: 'forms.input',
-      backgroundColor: 'greySmoke',
-    },
-    focused: {
-      variant: 'forms.input',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      borderColor: 'cobalt',
-      backgroundColor: 'greySmoke',
-    },
     disabled: {
       variant: 'forms.input',
       borderColor: 'greySmoke',
       backgroundColor: '#fff',
       color: 'greySilver',
+    },
+    errored: {
+      variant: 'forms.input',
+      color: 'redCandy',
+      backgroundColor: 'redBallet',
+      hoverColor: 'redFlamingo',
+      focusBorderColor: 'redRose',
     },
   },
   styles: {
@@ -69,6 +69,21 @@ export default {
     },
     input: {
       fontFamily: 'body',
+
+      help: {
+        color: 'greyPidgeon',
+      },
+      hovered: {
+        variant: 'forms.input',
+        backgroundColor: 'greySmoke',
+      },
+      focused: {
+        variant: 'forms.input',
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: 'cobalt',
+        backgroundColor: 'transparent',
+      },
     },
     label: {
       fontFamily: 'body',
