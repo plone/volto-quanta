@@ -1,55 +1,14 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import PropTypes from 'prop-types';
-import { Box, Textarea as ThemeUITextArea } from 'theme-ui';
+import { Textarea as ThemeUITextArea } from 'theme-ui';
+import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 
-const REQUIREDSVG =
-  '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="%23f54e38" d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>';
-
-const Input = (props) => {
-  const {
-    description,
-    disabled,
-    error,
-    fieldSet,
-    id,
-    placeholder,
-    title,
-    variant,
-  } = props;
+const TextArea = (props) => {
+  const { disabled, error, fieldSet, id, placeholder, variant } = props;
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        mt: 30,
-        'textarea:focus~label, textarea:not(:placeholder-shown)~label': {
-          transform: 'scale(.8) translateY(-3.3rem) translateX(-.75rem)',
-        },
-        'textarea:not(:placeholder-shown):not(:hover):not(:active):not(:focus)~label': {
-          color: (theme) =>
-            (error.length > 0 && theme.forms.errored.color) || 'greyPidgeon',
-        },
-        'textarea::placeholder': {
-          opacity: 0,
-          color: 'greyPidgeon',
-          transition: 'opacity 0.15s ease-in-out',
-        },
-        'textarea:active::placeholder, textarea:focus::placeholder': {
-          opacity: 1,
-        },
-        'textarea[required]~label:after': {
-          display: 'inline-block',
-          verticalAlign: 'middle',
-          lineHeight: 0,
-          marginLeft: '3px',
-          content: `url('data:image/svg+xml;utf8,${REQUIREDSVG}')`,
-        },
-        'textarea[required]:not(:placeholder-shown):not(:hover):not(:active):not(:focus)~label:after': {
-          filter: 'grayscale(1)',
-        },
-      }}
-    >
+    <FormFieldWrapper {...props} className="text">
       <ThemeUITextArea
         className="quanta textarea"
         sx={{
@@ -82,59 +41,11 @@ const Input = (props) => {
         placeholder={placeholder || ' '}
         {...props}
       />
-      <label
-        htmlFor={`field-${id}`}
-        sx={{
-          position: 'absolute',
-          fontSize: '14px',
-          lineHeight: '24px',
-          fontFamily: 'cmsui',
-          fontWeight: '500',
-          background: 'transparent',
-          color: (theme) =>
-            (disabled && theme.forms.disabled.color) ||
-            (error.length > 0 && theme.forms.errored.color) ||
-            theme.forms.label.color,
-          left: '.75rem',
-          top: 'calc(.5rem + 6px)',
-          maxWidth: 'calc(100% - 1.5rem)',
-          pointerEvents: 'none',
-          transformOrigin: 'bottom left',
-          transition: 'transform .15s cubic-bezier(.4,0,.2,1)',
-        }}
-      >
-        {title}
-      </label>
-      {error &&
-        error.map((message) => (
-          <p
-            key={message}
-            sx={{
-              fontSize: 0,
-              color: (theme) => theme.forms.errored.color,
-              my: 1,
-            }}
-          >
-            {message}
-          </p>
-        ))}
-      <p
-        sx={{
-          fontSize: 0,
-          color: (theme) =>
-            disabled
-              ? theme.forms.disabled.color
-              : theme.styles.input.help.color,
-          my: 1,
-        }}
-      >
-        {description}
-      </p>
-    </Box>
+    </FormFieldWrapper>
   );
 };
 
-Input.propTypes = {
+TextArea.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
@@ -159,7 +70,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
 };
 
-Input.defaultProps = {
+TextArea.defaultProps = {
   description: null,
   required: false,
   error: [],
@@ -176,4 +87,4 @@ Input.defaultProps = {
   maxLength: null,
 };
 
-export default Input;
+export default TextArea;
