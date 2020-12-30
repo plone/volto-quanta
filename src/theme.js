@@ -47,6 +47,9 @@ export default {
       padding: '11px 8px',
       lineHeight: '24px',
     },
+    textarea: {
+      variant: 'forms.input',
+    },
     disabled: {
       variant: 'forms.input',
       borderColor: 'greySmoke',
