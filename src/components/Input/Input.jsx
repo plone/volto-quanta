@@ -1,42 +1,17 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Input as ThemeUIInput } from 'theme-ui';
 import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
+import cx from 'classnames';
 
 const Input = (props) => {
-  const { disabled, error, id, placeholder, variant } = props;
+  const { error, id, placeholder } = props;
 
   return (
     <FormFieldWrapper {...props} className="text">
-      <ThemeUIInput
-        className="quanta input"
-        sx={{
-          '&:hover': {
-            backgroundColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.hoverColor
-                : theme.styles.input.hovered.backgroundColor,
-          },
-          '&:focus': {
-            borderColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.focusBorderColor
-                : theme.styles.input.focused.borderColor,
-            outlineColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.focusBorderColor
-                : theme.styles.input.focused.borderColor,
-            backgroundColor: (theme) =>
-              theme.styles.input.focused.backgroundColor,
-          },
-        }}
-        variant={
-          (disabled && 'disabled') ||
-          (error.length > 0 && 'errored') ||
-          variant ||
-          'input'
-        }
+      <input
+        aria-labelledby={`field-label-${id}`}
+        aria-describedby={`field-hint-${id}`}
+        className={cx('q input', { error: error })}
         id={`field-${id}`}
         placeholder={placeholder || ' '}
         {...props}
@@ -73,8 +48,8 @@ Input.propTypes = {
 Input.defaultProps = {
   description: null,
   required: false,
-  error: [],
-  value: null,
+  error: undefined,
+  value: undefined,
   onChange: () => {},
   onBlur: () => {},
   onClick: () => {},

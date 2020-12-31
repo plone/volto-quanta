@@ -1,7 +1,7 @@
 import DesignSystem from './components/DesignSystem/DesignSystem';
 import Input from './components/Input/Input';
 
-import './theme/main.less';
+import './styles/quanta.scss';
 
 export default (config) => {
   config.addonRoutes.push({
