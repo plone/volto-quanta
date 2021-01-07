@@ -1,3 +1,4 @@
+// This is the partial scss load for the current implemented Quanta components
 // SET UNIVERSE RULES
 // Put the conditions to generate a universe
 // functions
@@ -7,8 +8,8 @@
 // utilities
 @import "rules/variables";                      // Mandatory
 @import "rules/constitutives";                  // Mandatory
-@import "rules/bigbang";                        // Mandatory
-
+// No reset since it will collide with the SemanticUI one
+// @import "rules/bigbang";                        // Mandatory
 
 
 // ELEMENTARY PARTICLES
@@ -27,32 +28,32 @@
 
 
 // ATOMS
-@import "atoms/indicators/scrollbars";                    // Mandatory
+@import "atoms/indicators/scrollbars";          // Mandatory
 
-@import "atoms/text/titles";                    // Mandatory
-@import "atoms/text/displays";                  // Optional (Add it if you need really big title sizes)
-@import "atoms/text/paragraphs";                // Mandatory
-@import "atoms/text/inliners";                  // Mandatory
-@import "atoms/text/annotations";               // Optional
-@import "atoms/text/edits";                     // Recommended
-@import "atoms/text/lists";                     // Recommended
+// @import "atoms/text/titles";                    // Mandatory
+// @import "atoms/text/displays";                  // Optional (Add it if you need really big title sizes)
+// @import "atoms/text/paragraphs";                // Mandatory
+// @import "atoms/text/inliners";                  // Mandatory
+// @import "atoms/text/annotations";               // Optional
+// @import "atoms/text/edits";                     // Recommended
+// @import "atoms/text/lists";                     // Recommended
 
-@import "atoms/code/code";                      // Recommended
-@import "atoms/code/keyboard";                  // Recommended
-@import "atoms/code/computer";                  // Optional
+// @import "atoms/code/code";                      // Recommended
+// @import "atoms/code/keyboard";                  // Recommended
+// @import "atoms/code/computer";                  // Optional
 
-@import "atoms/builders/helpers";               // Mandatory
+// @import "atoms/builders/helpers";               // Mandatory
 
-@import "atoms/bits/avatars";                    // Recommended
-@import "atoms/bits/icons";                    // Recommended
-@import "atoms/bits/badges";                    // Recommended
-@import "atoms/bits/images";                    // Recommended
-@import "atoms/bits/iframes";                   // Optional
+// @import "atoms/bits/avatars";                    // Recommended
+// @import "atoms/bits/icons";                    // Recommended
+// @import "atoms/bits/badges";                    // Recommended
+// @import "atoms/bits/images";                    // Recommended
+// @import "atoms/bits/iframes";                   // Optional
 
-@import "atoms/knobs/links";                    // Mandatory
-@import "atoms/knobs/buttons";                  // Mandatory
-@import "atoms/knobs/tags";                     // Recommended
-@import "atoms/knobs/pills";                    // Optional
+// @import "atoms/knobs/links";                    // Mandatory
+// @import "atoms/knobs/buttons";                  // Mandatory
+// @import "atoms/knobs/tags";                     // Recommended
+// @import "atoms/knobs/pills";                    // Optional
 
 @import "atoms/inputs/ecosystem";               // Mandatory
 
@@ -65,4 +66,4 @@
 @import "atoms/controls/radios";                  // Mandatory
 @import "atoms/controls/toggles";                  // Recommended - Requires checkboxes
 
-@import "atoms/navs/expands";                  // Mandatory
+// @import "atoms/navs/expands";                  // Mandatory
