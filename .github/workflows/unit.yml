@@ -10,6 +10,7 @@ jobs:
       NAMESPACE: '@plone'
       DEPENDENCIES: ''
       GIT_NAME: 'volto-quanta'
+      GIT_USER: 'plone'
 
     steps:
       - uses: actions/checkout@v2
@@ -35,5 +36,7 @@ jobs:
       - name: Pull docker image
         run: docker pull plone/volto-addon-ci
 
+      - run: echo ${{ github.head_ref }}
+
       - name: Run tests
-        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} plone/volto-addon-ci test
+        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} -e GIT_USER=${{env.GIT_USER}} -e GIT_CHANGE_ID=${{ github.head_ref }} plone/volto-addon-ci test
