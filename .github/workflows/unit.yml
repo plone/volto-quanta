@@ -11,10 +11,14 @@ jobs:
       DEPENDENCIES: ''
       GIT_NAME: 'volto-quanta'
       GIT_USER: 'plone'
-      GIT_BRANCH: ${{ github.head_ref }}
+      GIT_BRANCH: ${GITHUB_REF##*/}
 
     steps:
       - uses: actions/checkout@v2
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
 
       # node setup
       - name: Use Node.js ${{ matrix.node-version }}
