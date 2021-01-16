@@ -12,6 +12,7 @@ jobs:
       GIT_NAME: 'volto-quanta'
       GIT_USER: 'plone'
       GIT_BRANCH: ${GITHUB_REF##*/}
+      GIT_BRANCH2: ${github.ref}
 
     steps:
       - uses: actions/checkout@v2
@@ -42,6 +43,7 @@ jobs:
         run: docker pull plone/volto-addon-ci
 
       - run: echo ${{env.GIT_BRANCH}}
+      - run: echo ${{env.GIT_BRANCH2}}
 
       - name: Run tests
-        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} -e GIT_USER=${{env.GIT_USER}} -e GIT_CHANGE_ID=${{env.GIT_BRANCH}} plone/volto-addon-ci test
+        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} -e GIT_USER=${{env.GIT_USER}} -e GIT_BRANCH=${{env.GIT_BRANCH}} plone/volto-addon-ci test
