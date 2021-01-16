@@ -26,29 +26,6 @@ SemanticUI theming engine proved to be good but overwhelming for newbies. Even e
 
 There's a current goal to separate the Themed UI from the CMSUI (management views/engine), so they are independent and can be themed (and delivered) separately. Themed UI should be possible to use any CSS or JS Framework out there, without having the burden to still have SemanticUI because some element in Volto uses it.
 
-## The experimental part
-
-Deliver just the CSS we need in every page view is also paramount these days. `CSS-in-JS` solutions excel in this matter, delivering only the required CSS tied to every component. These kind of solutions also tend to have a love-hate relationship amongst developers, so the aim is experiment with it for now, and find out if it meets Volto's requirements. So far we need a solution that:
-
-- Allows to load the CSS that the view needs
-- Encapsulating CSS at the component level
-- Allows overriding plain CSS from the project
-- Works in SSR
-- Allows composition
-- Includes a theming engine
-
-Overriding a CMSUI element is not that common, but it should the definitely possible using plain CSS that would override the component `CSS-in-JS` one.
-
-Encapsulation is a good way to manage CSS, specially when your app grows in complexity, avoiding dead CSS and write very specific CSS is very common in a project.
-
-Reusability is also important, so a way to easily define (and apply) `variants` for your components should be easy to implement too.
-
-`CSS-in-JS` have also "bad" sides too, as your code gets also the CSS part on it, so it might get easily cluttered. We need to find out if we can overcome this in an elegant way.
-
-### Emotion and Theme-UI
-
-Initially, as part of the experiment, we are using [emotion](https://emotion.sh) and [theme-ui](https://theme-ui.com).
-
 ## Roadmap
 
 - Widgets
@@ -58,3 +35,7 @@ Initially, as part of the experiment, we are using [emotion](https://emotion.sh)
 - Add menu
 - Add block menu
 - Sidebar UX/UI
+
+## Experimental branch
+
+There was some work done experimenting with using a `CSS-in-JS` approach using `emotion` and `theme-ui`. It has been dropped for now, but you can find it in the branch: theme-ui

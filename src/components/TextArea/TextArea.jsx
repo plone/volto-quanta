@@ -1,42 +1,17 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Textarea as ThemeUITextArea } from 'theme-ui';
 import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
+import cx from 'classnames';
 
 const TextArea = (props) => {
-  const { disabled, error, fieldSet, id, placeholder, variant } = props;
+  const { error, id, placeholder } = props;
 
   return (
     <FormFieldWrapper {...props} className="text">
-      <ThemeUITextArea
-        className="quanta textarea"
-        sx={{
-          '&:hover': {
-            backgroundColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.hoverColor
-                : theme.styles.input.hovered.backgroundColor,
-          },
-          '&:focus': {
-            borderColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.focusBorderColor
-                : theme.styles.input.focused.borderColor,
-            outlineColor: (theme) =>
-              error.length > 0
-                ? theme.forms.errored.focusBorderColor
-                : theme.styles.input.focused.borderColor,
-            backgroundColor: (theme) =>
-              theme.styles.input.focused.backgroundColor,
-          },
-        }}
-        variant={
-          (disabled && 'disabled') ||
-          (error.length > 0 && 'errored') ||
-          variant ||
-          'textarea'
-        }
+      <textarea
+        aria-labelledby={`field-label-${id}`}
+        aria-describedby={`field-hint-${id}`}
+        className={cx('q input textarea', { error: error })}
         id={`field-${id}`}
         placeholder={placeholder || ' '}
         {...props}
@@ -73,7 +48,7 @@ TextArea.propTypes = {
 TextArea.defaultProps = {
   description: null,
   required: false,
-  error: [],
+  error: undefined,
   value: null,
   onChange: () => {},
   onBlur: () => {},
