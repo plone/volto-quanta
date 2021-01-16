@@ -12,7 +12,7 @@ jobs:
       GIT_NAME: 'volto-quanta'
       GIT_USER: 'plone'
       GIT_BRANCH: ${GITHUB_REF##*/}
-      GIT_BRANCH2: ${github.ref}
+      GIT_BRANCH2: ${{github.ref}}
 
     steps:
       - uses: actions/checkout@v2
