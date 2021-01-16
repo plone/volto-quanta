@@ -1,2 +1,3 @@
-src/styles/quanta.scss
+src/styles/quanta-full.scss
 src/styles/rules/_variables.scss
+src/styles/rules/_constitutives.scss

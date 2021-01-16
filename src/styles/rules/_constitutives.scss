@@ -1,35 +1,34 @@
-/* stylelint-disable */
 //*// TEXT //*//
 
 //// Text: Paragraphs, info notes, placeholders
-%text-small {font-size: $s; line-height: 1.5; letter-spacing: 0.024em; font-weight: $regular;}
-%text-medium {font-size: $m; line-height: 1.5; letter-spacing: 0.012em; font-weight: $regular;}
-%text-large {font-size: $l; line-height: 1.25; letter-spacing: 0; font-weight: $regular;}
+%text-small {font-size: $s; font-weight: $regular; letter-spacing: 0.024em; line-height: 1.5;}
+%text-medium {font-size: $m; font-weight: $regular; letter-spacing: 0.012em; line-height: 1.5;}
+%text-large {font-size: $l; font-weight: $regular; letter-spacing: 0; line-height: 1.25;}
 
 //// Labels: Labels, Legends, Input vaules, links
-%label-small {font-size: $s; line-height: 1.5; letter-spacing: 0.024em; font-weight: $medium;}
-%label-medium {font-size: $m; line-height: 1.714285714285; letter-spacing: 0.012em; font-weight: $medium;}
-%label-large {font-size: $l; line-height: 1.5;   letter-spacing: 0; font-weight: $medium;}
+%label-small {font-size: $s; font-weight: $medium; letter-spacing: 0.024em; line-height: 1.5;}
+%label-medium {font-size: $m; font-weight: $medium; letter-spacing: 0.012em; line-height: 1.714285714285;}
+%label-large {font-size: $l; font-weight: $medium;   letter-spacing: 0; line-height: 1.5;}
 
 //// Button: Labelled buttons
-%button-small {font-size: $s; line-height: 1.5; letter-spacing: 0.024em; font-weight: $medium;}
-%button-medium {font-size: $l; line-height: 1.5; letter-spacing: 0; font-weight: $medium;}
-%button-large {font-size: $xl; line-height: 1.25;  letter-spacing: -0.012em; font-weight: $medium;}
+%button-small {font-size: $s; font-weight: $medium; letter-spacing: 0.024em; line-height: 1.5;}
+%button-medium {font-size: $l; font-weight: $medium; letter-spacing: 0; line-height: 1.5;}
+%button-large {font-size: $xl; font-weight: $medium;  letter-spacing: -0.012em; line-height: 1.25;}
 
 //// Titles
-%title-small {font-size: $xl; line-height: 1.25;  letter-spacing: -0.012em; font-weight: $bold;}
-%title-medium {font-size: $xxl; line-height: 1.25;  letter-spacing: -0.024em; font-weight: $bold;}
+%title-small {font-size: $xl; font-weight: $bold;  letter-spacing: -0.012em; line-height: 1.25;}
+%title-medium {font-size: $xxl; font-weight: $bold;  letter-spacing: -0.024em; line-height: 1.25;}
 
 //// Code
-%text-kbd {font-size: $s; line-height: 1.25; letter-spacing: 0; font-weight: $regular; font-family: $system;}
-%text-code {font-size: $m; line-height:1.5; letter-spacing: 0; font-weight: $regular; font-family: $mono;}
+%text-kbd { font-family: $system;font-size: $s; font-weight: $regular; letter-spacing: 0; line-height: 1.25;}
+%text-code { font-family: $mono;font-size: $m; font-weight: $regular; letter-spacing: 0; line-height:1.5;}
 
 
 ////
 %link {
     @extend %label-medium;
-    font-size: inherit;
     color: $sapphire;
+    font-size: inherit;
     line-height: initial;
     text-decoration: underline; // 2
     text-decoration: underline solid $smoke; // 2
@@ -71,31 +70,32 @@ $icon-expand: 'data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg"
 
 //// Screen reader only
 %sr {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  padding: 0;
   border: 0;
+  margin: -1px;
   clip: rect(0 0 0 0);
   clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
   white-space: nowrap;
 }
 
 
 @mixin focus-visible {
   &:-moz-focusring {
-    outline:0;
-    animation-name: focus-visible;
     animation-duration: $time-medium;
+    animation-name: focus-visible;
     box-shadow: 0 0 0 $rhythm-tiny rgba($cobalt, $a4) !important;
+    outline:0;
   }
+
   &:focus-visible {
-    outline:0;
-    animation-name: focus-visible;
     animation-duration: $time-medium;
+    animation-name: focus-visible;
     box-shadow: 0 0 0 $rhythm-tiny rgba($cobalt, $a4) !important;
+    outline:0;
   }
 }
 
@@ -109,7 +109,7 @@ $icon-expand: 'data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg"
 }
 
 @keyframes ripple {
-  0% { transform: scale(0, 0); opacity: $a5;}
-  40% {transform: scale(50, 50);opacity: $a5;}
+  0% { opacity: $a5; transform: scale(0, 0);}
+  40% {opacity: $a5;transform: scale(50, 50);}
   100% { opacity: $a0; transform: scale(200, 200);}
 }

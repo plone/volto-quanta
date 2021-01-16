@@ -27,7 +27,7 @@
 
 
 // ATOMS
-@import "atoms/indicators/scrollbars";                    // Mandatory
+@import "atoms/indicators/scrollbars";          // Mandatory
 
 @import "atoms/text/titles";                    // Mandatory
 @import "atoms/text/displays";                  // Optional (Add it if you need really big title sizes)
@@ -61,8 +61,8 @@
 @import "atoms/inputs/dropdown";                // Mandatory
 
 
-@import "atoms/controls/checkboxes";                  // Mandatory
-@import "atoms/controls/radios";                  // Mandatory
-@import "atoms/controls/toggles";                  // Recommended - Requires checkboxes
+@import "atoms/controls/checkboxes";            // Mandatory
+@import "atoms/controls/radios";                // Mandatory
+@import "atoms/controls/toggles";               // Recommended - Requires checkboxes
 
-@import "atoms/navs/expands";                  // Mandatory
+@import "atoms/navs/expands";                   // Mandatory

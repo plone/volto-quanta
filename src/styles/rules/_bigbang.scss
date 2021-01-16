@@ -3,15 +3,11 @@
 // It is a combination of Sanitize, Bootstrap reboot and Normalize
 // Yes, it has a lot of opinionated resets ⭢ https://www.youtube.com/watch?v=s1mXMS49hbU
 
-
-
 //*// HOW TO //*//
 //    Titles are mareked with //*//     ⭢ Search "//*//" to find Titles
 //    Subtitles are marked with /**     ⭢ Search "/**" to find Titles
 //    Comments are marked with //       ⭢ Search "//" to find Comments
 //    Number markes use /* n */         ⭢ Search "/* " with a space find numbers
-
-
 
 //*// GLOBAL //*//
 
@@ -21,7 +17,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /**
@@ -31,8 +27,8 @@
 
 ::before,
 ::after {
-    text-decoration: inherit; /* 1 */
-    vertical-align: inherit; /* 2 */
+  text-decoration: inherit; /* 1 */
+  vertical-align: inherit; /* 2 */
 }
 
 /**
@@ -46,14 +42,14 @@
 */
 
 html {
-    cursor: default; /* 1 */
-    line-height: $line-base; /* 2 */
-    -moz-tab-size: 3; /* 3 */
-    tab-size: 3; /* 3 */
-    -webkit-tap-highlight-color: transparent /* 4 */;
-    -ms-text-size-adjust: 100%; /* 5 */
-    -webkit-text-size-adjust: 100%; /* 5 */
-    word-break: break-word; /* 6 */
+  cursor: default; /* 1 */
+  line-height: $line-base; /* 2 */
+  -moz-tab-size: 3; /* 3 */
+  tab-size: 3; /* 3 */
+  -webkit-tap-highlight-color: transparent /* 4 */;
+  -ms-text-size-adjust: 100%; /* 5 */
+  -webkit-text-size-adjust: 100%; /* 5 */
+  word-break: break-word; /* 6 */
 }
 
 /**
@@ -61,17 +57,17 @@ html {
 */
 
 body {
-    margin: 0;
-    font-family: $family-base;
-    @extend %text-medium; //font size, line height, letter spacing and weight
-    color: $color-base;
-    text-align: $align-base;
-    background-color: $bg-base; // 2
-    -webkit-text-size-adjust: 100%; // 3
-    -webkit-tap-highlight-color: rgba($space, 0); /* 4 */ //transaprent
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale; //Firefox Mac
+  margin: 0;
+  background-color: $bg-base; // 2
+  color: $color-base;
+  font-family: $family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; //Firefox Mac
+  -webkit-tap-highlight-color: rgba($space, 0); /* 4 */ //transaprent
+  text-align: $align-base;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%; // 3
+  @extend %text-medium; //font size, line height, letter spacing and weight
 }
 
 // https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
@@ -82,26 +78,19 @@ body {
 }
 */
 ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
+  padding: 0;
+  border-style: none;
 }
+
 ::selection {
-    background-color: $sky; color: $denim;
-}
-::selection:window-inactive { //albert
-    background-color: $smoke;
+  background-color: $sky;
+  color: $denim;
 }
 
-
-
-
-
-
-
-
-
-
-
+::selection:window-inactive {
+  //albert
+  background-color: $smoke;
+}
 
 //*// BITS //*//
 
@@ -110,102 +99,106 @@ body {
 ANCHORS, LINKS
 **/
 
-
-
-
 //*// BUILDERS //*//
 table {
-    caption-side: bottom;
-    border-collapse: collapse;
-  }
-  
-  caption {
-    padding-top: $rhythm-medium;
-    padding-bottom: $rhythm-medium;
-    color: $pigeon;
-    text-align: left;
-  }
-  
-  // 1. Matches default `<td>` alignment by inheriting `text-align`.
-  // 2. Fix alignment for Safari
-  
-  th {
-    text-align: inherit; // 1
-    text-align: -webkit-match-parent; // 2
-  }
-  
-  thead,
-  tbody,
-  tfoot,
-  tr,
-  td,
-  th {
-    border-color: inherit;
-    border-style: solid;
-    border-width: 0;
-  }
+  border-collapse: collapse;
+  caption-side: bottom;
+}
 
+caption {
+  padding-top: $rhythm-medium;
+  padding-bottom: $rhythm-medium;
+  color: $pigeon;
+  text-align: left;
+}
 
+// 1. Matches default `<td>` alignment by inheriting `text-align`.
+// 2. Fix alignment for Safari
 
+th {
+  text-align: inherit; // 1
+  text-align: -webkit-match-parent; // 2
+}
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-width: 0;
+  border-style: solid;
+  border-color: inherit;
+}
 
 //*// FORM //*//
 label {
-    display: inline-block; // 1
+  display: inline-block; // 1
 }
+
 input,
 select,
 optgroup,
 textarea {
-    margin: 0; // 1
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+  margin: 0; // 1
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
+
 input {
-    overflow: visible;
+  overflow: visible;
 }
+
 select {
-    text-transform: none;
-    -webkit-appearance: none;
+  -webkit-appearance: none;
+  text-transform: none;
 }
+
 select {
-    word-wrap: normal;
+  word-wrap: normal;
 }
+
 [list]::-webkit-calendar-picker-indicator {
-    display: none;
+  display: none;
 }
 
 ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
+  padding: 0;
+  border-style: none;
 }
+
 textarea {
-    resize: vertical; // 1
+  resize: vertical; // 1
 }
+
 fieldset {
-    min-width: 0; // 1
-    padding: 0; // 2
-    margin: 0; // 2
-    border: 0; // 2
-    margin-top: 30px;
-    > .field {
-        margin: 6px 0 0;
-    }
+  min-width: 0; // 1
+  padding: 0; // 2
+  border: 0; // 2
+  margin: 0; // 2
+  margin-top: 30px;
+
+  > .field {
+    margin: 6px 0 0;
+  }
 }
+
 legend {
-    float: left; // 1
-    width: 100%;
-    padding: 0;
-    margin-bottom: 0;
-    @extend %label-small;
-    color: $pigeon;
-    line-height: inherit;
-    white-space: normal; // 2
-  
-    + * {
-        clear: left; // 3
-    }
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0;
+  color: $pigeon;
+  float: left; // 1
+  line-height: inherit;
+  white-space: normal; // 2
+  @extend %label-small;
+
+  + * {
+    clear: left; // 3
+  }
 }
+
 ::-webkit-datetime-edit-fields-wrapper,
 ::-webkit-datetime-edit-text,
 ::-webkit-datetime-edit-minute,
@@ -213,41 +206,45 @@ legend {
 ::-webkit-datetime-edit-day-field,
 ::-webkit-datetime-edit-month-field,
 ::-webkit-datetime-edit-year-field {
-    padding: 0;
+  padding: 0;
 }
 
 ::-webkit-inner-spin-button {
-    height: auto;
-}
-[type="search"] {
-    outline-offset: -2px; // 1
-    -webkit-appearance: textfield; // 2
-}
-::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-::-webkit-file-upload-button {
-    font: inherit; // 1
-    -webkit-appearance: button; // 2
-}
-output {
-    display: inline-block;
+  height: auto;
 }
 
+[type='search'] {
+  -webkit-appearance: textfield; // 2
+  outline-offset: -2px; // 1
+}
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; // 2
+  font: inherit; // 1
+}
+
+output {
+  display: inline-block;
+}
 
 //*// INDICATORS //*//
 summary {
-    display: list-item; // 1
-    cursor: pointer;
+  display: list-item; // 1
+  cursor: pointer;
 }
+
 progress {
-    vertical-align: baseline;
+  vertical-align: baseline;
 }
+
 [hidden] {
-    display: none !important;
+  display: none !important;
 }
-
-
