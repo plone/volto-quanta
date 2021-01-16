@@ -36,4 +36,4 @@ jobs:
         run: docker pull plone/volto-addon-ci
 
       - name: Run tests
-        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} -v $(pwd):/opt/frontend/my-volto-project/src/addons/${{env.GIT_NAME}} plone/volto-addon-ci lint
+        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} plone/volto-addon-ci test
