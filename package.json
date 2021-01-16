@@ -4,7 +4,10 @@
   "description": "Quanta Design System - Volto package",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prettier": "make prettier",
+    "lint": "make lint",
+    "stylelint": "make stylelint",
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,7 @@
     ],
     "rules": {
       "prettier/prettier": true,
+      "declaration-block-single-line-max-declarations": 5,
       "rule-empty-line-before": [
         "always-multi-line",
         {
