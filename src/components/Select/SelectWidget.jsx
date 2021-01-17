@@ -272,6 +272,8 @@ class SelectWidget extends Component {
           </>
         ) : (
           <Select
+            aria-labelledby={`field-label-${id}`}
+            aria-describedby={`field-hint-${id}`}
             id={`field-${id}`}
             key={this.props.choices}
             name={id}
