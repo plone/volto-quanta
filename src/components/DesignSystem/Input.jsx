@@ -1,9 +1,9 @@
-/** @jsx jsx */
-import { jsx } from 'theme-ui';
-import { Grid } from 'theme-ui';
-import { Container } from 'semantic-ui-react';
+import React from 'react';
+// /** @jsx jsx */
+// import { jsx } from 'theme-ui';
+// import { Grid } from 'theme-ui';
+import { Container, Grid } from 'semantic-ui-react';
 import Input from '../Input/Input';
-import TextArea from '../TextArea/TextArea';
 
 const DesignSystem = () => {
   return (

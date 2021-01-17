@@ -12,6 +12,9 @@ const DesignSystem = () => {
         <li>
           <Link to="/designsystem/textarea">Textarea</Link>
         </li>
+        <li>
+          <Link to="/designsystem/select">Select</Link>
+        </li>
       </ul>
     </Container>
   );

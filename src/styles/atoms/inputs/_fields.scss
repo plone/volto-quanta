@@ -1,4 +1,5 @@
-.q.input {
+.q.input,
+.q .react-select__control {
   @extend %label-medium;
   width: 100%;
   padding: 12px;
@@ -42,7 +43,8 @@
 }
 
 //// Label
-.q.input {
+.q.input,
+.q.react-select-container {
   + label {
     position: absolute;
     top: 12px;
@@ -59,8 +61,9 @@
   &:active + label,
   &:focus + label,
   &:not(:placeholder-shown) + label {
-    margin-top: -30px;
-    margin-left: -12px;
+    // Remove important if we get rid of semanticUI field
+    margin-top: -30px !important;
+    margin-left: -12px !important;
     transform: scale(0.8571428571, 0.8571428571);
     transform-origin: 0 0;
   }

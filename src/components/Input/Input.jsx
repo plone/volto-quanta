@@ -4,7 +4,16 @@ import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 import cx from 'classnames';
 
 const Input = (props) => {
-  const { error, id, placeholder } = props;
+  const {
+    error,
+    id,
+    minLength,
+    maxLength,
+    onChange,
+    onClick,
+    placeholder,
+    value,
+  } = props;
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -14,6 +23,13 @@ const Input = (props) => {
         className={cx('q input', { error: error })}
         id={`field-${id}`}
         placeholder={placeholder || ' '}
+        value={value || ''}
+        onClick={() => onClick()}
+        minLength={minLength || null}
+        maxLength={maxLength || null}
+        onChange={({ target }) =>
+          onChange(id, target.value === '' ? undefined : target.value)
+        }
         {...props}
       />
     </FormFieldWrapper>

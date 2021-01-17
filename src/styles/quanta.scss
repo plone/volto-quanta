@@ -63,4 +63,16 @@
 @import 'atoms/controls/radios'; // Mandatory
 @import 'atoms/controls/toggles'; // Recommended - Requires checkboxes
 
+// Overrides for semantic UI default, remove when it's default.
+.ui.form {
+  @import 'atoms/inputs/ecosystem'; // Mandatory
+
+  @import 'atoms/inputs/fields'; // Mandatory
+  @import 'atoms/inputs/textarea'; // Mandatory
+  @import 'atoms/inputs/dropdown'; // Mandatory
+
+  @import 'atoms/controls/checkboxes'; // Mandatory
+  @import 'atoms/controls/radios'; // Mandatory
+  @import 'atoms/controls/toggles'; // Recommended - Requires checkboxes
+}
 // @import "atoms/navs/expands"; // Mandatory

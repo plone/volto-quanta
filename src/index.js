@@ -1,6 +1,9 @@
 import DSInput from './components/DesignSystem/Input';
 import DSTextArea from './components/DesignSystem/TextArea';
+import DSSelect from './components/DesignSystem/Select';
 import Input from './components/Input/Input';
+import TextArea from './components/TextArea/TextArea';
+import SelectWidget from './components/Select/SelectWidget';
 
 import './styles/quanta.scss';
 
@@ -15,11 +18,23 @@ export default (config) => {
       path: '/designsystem/textarea',
       component: DSTextArea,
     },
+    {
+      path: '/designsystem/select',
+      component: DSSelect,
+    },
   ];
-
-  config.widgets.default = Input;
 
   return {
     ...config,
   };
 };
+
+export function overrideDefaultControls(config) {
+  config.widgets.default = Input;
+  config.widgets.widget.textarea = TextArea;
+  config.widgets.choices = SelectWidget;
+
+  return {
+    ...config,
+  };
+}
