@@ -55,8 +55,7 @@
   },
   "dependencies": {
     "jest-axe": "4.1.0",
-    "razzle-plugin-scss": "3.3.9",
-    "theme-ui": "0.6.0-alpha.3"
+    "razzle-plugin-scss": "3.3.9"
   },
   "devDependencies": {
     "eslint-plugin-prettier": "3.1.3",
