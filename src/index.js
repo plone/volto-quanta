@@ -24,9 +24,7 @@ export default (config) => {
     },
   ];
 
-  return {
-    ...config,
-  };
+  return config;
 };
 
 export function overrideDefaultControls(config) {
@@ -34,7 +32,5 @@ export function overrideDefaultControls(config) {
   config.widgets.widget.textarea = TextArea;
   config.widgets.choices = SelectWidget;
 
-  return {
-    ...config,
-  };
+  return config;
 }
