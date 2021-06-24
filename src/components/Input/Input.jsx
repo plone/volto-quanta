@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 import cx from 'classnames';
+import { isNil } from 'lodash';
+import { useForwardedRef } from '../../helpers';
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   const {
+    disabled,
     error,
     id,
     minLength,
@@ -12,29 +15,43 @@ const Input = (props) => {
     onChange,
     onClick,
     placeholder,
+    readOnly,
+    tabIndex,
     value,
   } = props;
+
+  const inputRef = useForwardedRef(ref);
+
+  const computeTabIndex = () => {
+    if (!isNil(tabIndex)) return tabIndex;
+    if (disabled) return -1;
+  };
 
   return (
     <FormFieldWrapper {...props} className="text">
       <input
-        aria-labelledby={`field-label-${id}`}
         aria-describedby={`field-hint-${id}`}
+        aria-labelledby={`field-label-${id}`}
         className={cx('q input', { error: error })}
         id={`field-${id}`}
-        placeholder={placeholder || ' '}
-        value={value || ''}
-        onClick={() => onClick()}
+        disabled={disabled}
         minLength={minLength || null}
         maxLength={maxLength || null}
+        placeholder={placeholder || ' '}
+        onClick={() => onClick()}
         onChange={({ target }) =>
-          onChange(id, target.value === '' ? undefined : target.value)
+          readOnly
+            ? undefined
+            : onChange(id, target.value === '' ? undefined : target.value)
         }
-        {...props}
+        readOnly={readOnly}
+        ref={inputRef}
+        tabIndex={computeTabIndex()}
+        value={value || ''}
       />
     </FormFieldWrapper>
   );
-};
+});
 
 Input.propTypes = {
   id: PropTypes.string.isRequired,
@@ -62,6 +79,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  type: 'text',
   description: null,
   required: false,
   error: undefined,
@@ -71,7 +89,7 @@ Input.defaultProps = {
   onClick: () => {},
   onEdit: null,
   onDelete: null,
-  focus: false,
+  focus: null,
   icon: null,
   iconAction: null,
   minLength: null,
