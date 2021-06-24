@@ -14,7 +14,7 @@ const TextArea = (props) => {
         className={cx('q input textarea', { error: error })}
         id={`field-${id}`}
         placeholder={placeholder || ' '}
-        {...props}
+        // {...props}
       />
     </FormFieldWrapper>
   );
