@@ -1,65 +1,53 @@
 import React from 'react';
 import InputComponent from './Input';
 
-const Input = (props) => {
-  const [value, setValue] = React.useState(props.value);
-  const onChange = (block, value) => setValue(value);
+const Input = (args) => {
+  const [value, setValue] = React.useState(args.value ?? '');
+  const onChange = (block, value) => {
+    args.onChange({ value });
+    setValue(value);
+  };
 
-  return <InputComponent {...props} onChange={onChange} value={value} />;
+  return <InputComponent {...args} onChange={onChange} value={value} />;
 };
 
-export const Empty = (args) => {
-  return (
-    <Input
-      id="field-empty"
-      title="field 1 title"
-      description="Optional help text"
-      placeholder="Type something…"
-      required
-      {...args}
-    />
-  );
+export const Empty = Input.bind({});
+Empty.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  required: true,
 };
 
-export const Filled = (args) => {
-  return (
-    <Input
-      id="field-filled"
-      title="Filled field title"
-      description="Optional help text"
-      placeholder="Type something…"
-      value="Filled with value A"
-      required
-      {...args}
-    />
-  );
+export const Filled = Input.bind({});
+Filled.args = {
+  id: 'field-filled',
+  title: 'Filled field title',
+  description: 'Optional help text',
+  value: 'Filled with value A',
+  placeholder: 'Type something…',
+  required: true,
 };
 
-export const Disabled = (args) => {
-  return (
-    <Input
-      id="field-disabled"
-      title="Disabled field title"
-      description="Optional help text"
-      disabled
-      {...args}
-    />
-  );
+export const Disabled = Input.bind({});
+Disabled.args = {
+  id: 'field-disabled',
+  title: 'Disabled field title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  disabled: true,
 };
 
-export const Errored = (args) => {
-  return (
-    <Input
-      id="field-errored"
-      title="field title"
-      description="Optional help text"
-      placeholder="Type something…"
-      value="Filled with value A"
-      error={['This is the error']}
-      required
-      {...args}
-    />
-  );
+export const Errored = Input.bind({});
+Errored.args = {
+  id: 'field-errored',
+  title: 'Errored field title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  value: 'Filled with value A',
+  error: ['This is the error'],
+  required: true,
 };
 
 export default {
@@ -72,6 +60,14 @@ export default {
       </div>
     ),
   ],
+  argTypes: {
+    // controlled value prop
+    value: {
+      control: {
+        disable: true,
+      },
+    },
+  },
   // excludeStories: ['searchResults'],
   // subcomponents: { ArgsTable },
 };
