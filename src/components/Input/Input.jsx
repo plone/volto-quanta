@@ -16,6 +16,7 @@ const Input = React.forwardRef((props, ref) => {
     onClick,
     placeholder,
     readOnly,
+    required,
     tabIndex,
     value,
   } = props;
@@ -46,6 +47,7 @@ const Input = React.forwardRef((props, ref) => {
         }
         readOnly={readOnly}
         ref={inputRef}
+        required={required}
         tabIndex={computeTabIndex()}
         value={value || ''}
       />

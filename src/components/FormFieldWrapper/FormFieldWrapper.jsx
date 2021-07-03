@@ -2,7 +2,7 @@ import React from 'react';
 
 const FieldWrapper = (props) => {
   const { children, description, disabled, error, fieldSet, id, title } = props;
-
+  console.log(error);
   return (
     <div className="q field">
       {children}
@@ -15,7 +15,12 @@ const FieldWrapper = (props) => {
       </label>
       {/* Resizer fashion feature (enabled only for textarea) */}
       {/* <div className="resizer"></div> */}
-      {error && error.map((message) => <p key={message}>{message}</p>)}
+      {error &&
+        error.map((message) => (
+          <p className="q assist" key={message}>
+            {message}
+          </p>
+        ))}
 
       <p className="q hint" id={`field-hint-${id}`}>
         {description}

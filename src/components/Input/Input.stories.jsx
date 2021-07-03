@@ -11,8 +11,16 @@ const Input = (args) => {
   return <InputComponent {...args} onChange={onChange} value={value} />;
 };
 
-export const Empty = Input.bind({});
-Empty.args = {
+export const Default = Input.bind({});
+Default.args = {
+  id: 'field-empty',
+  title: 'field 1 title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+};
+
+export const Required = Input.bind({});
+Required.args = {
   id: 'field-empty',
   title: 'field 1 title',
   description: 'Optional help text',
@@ -30,15 +38,6 @@ Filled.args = {
   required: true,
 };
 
-export const Disabled = Input.bind({});
-Disabled.args = {
-  id: 'field-disabled',
-  title: 'Disabled field title',
-  description: 'Optional help text',
-  placeholder: 'Type something…',
-  disabled: true,
-};
-
 export const Errored = Input.bind({});
 Errored.args = {
   id: 'field-errored',
@@ -48,6 +47,15 @@ Errored.args = {
   value: 'Filled with value A',
   error: ['This is the error'],
   required: true,
+};
+
+export const Disabled = Input.bind({});
+Disabled.args = {
+  id: 'field-disabled',
+  title: 'Disabled field title',
+  description: 'Optional help text',
+  placeholder: 'Type something…',
+  disabled: true,
 };
 
 export default {
