@@ -2,7 +2,7 @@ import React from 'react';
 
 const FieldWrapper = (props) => {
   const { children, description, disabled, error, fieldSet, id, title } = props;
-  console.log(error);
+
   return (
     <div className="q field">
       {children}

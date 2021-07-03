@@ -2,9 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FormFieldWrapper from '../FormFieldWrapper/FormFieldWrapper';
 import cx from 'classnames';
+import { isNil } from 'lodash';
+import { useForwardedRef } from '../../helpers';
 
-const TextArea = (props) => {
-  const { error, id, placeholder } = props;
+const TextArea = React.forwardRef((props, ref) => {
+  const {
+    disabled,
+    error,
+    id,
+    minLength,
+    maxLength,
+    onChange,
+    onClick,
+    placeholder,
+    readOnly,
+    required,
+    tabIndex,
+    value,
+  } = props;
+
+  const TextAreaRef = useForwardedRef(ref);
+
+  const computeTabIndex = () => {
+    if (!isNil(tabIndex)) return tabIndex;
+    if (disabled) return -1;
+  };
 
   return (
     <FormFieldWrapper {...props} className="text">
@@ -13,12 +35,23 @@ const TextArea = (props) => {
         aria-describedby={`field-hint-${id}`}
         className={cx('q input textarea', { error: error })}
         id={`field-${id}`}
+        disabled={disabled}
         placeholder={placeholder || ' '}
-        // {...props}
+        onChange={({ target }) =>
+          readOnly
+            ? undefined
+            : onChange(id, target.value === '' ? undefined : target.value)
+        }
+        onClick={() => onClick()}
+        readOnly={readOnly}
+        ref={TextAreaRef}
+        required={required}
+        tabIndex={computeTabIndex()}
+        value={value || ''}
       />
     </FormFieldWrapper>
   );
-};
+});
 
 TextArea.propTypes = {
   id: PropTypes.string.isRequired,

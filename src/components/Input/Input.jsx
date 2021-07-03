@@ -39,12 +39,12 @@ const Input = React.forwardRef((props, ref) => {
         minLength={minLength || null}
         maxLength={maxLength || null}
         placeholder={placeholder || ' '}
-        onClick={() => onClick()}
         onChange={({ target }) =>
           readOnly
             ? undefined
             : onChange(id, target.value === '' ? undefined : target.value)
         }
+        onClick={() => onClick()}
         readOnly={readOnly}
         ref={inputRef}
         required={required}
