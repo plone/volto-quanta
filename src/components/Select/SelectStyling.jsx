@@ -13,22 +13,20 @@ export const SelectContainer = ({ children, ...props }) => {
   return (
     <ReactSelect>
       {({ components }) => (
-        <>
-          {console.log(props)}
-          <components.SelectContainer
-            {...props}
-            className={props.cx(
-              {
-                '--is-focused': props.isFocused,
-                '--has-value': props.hasValue,
-                '--has-placeholder': props.selectProps.placeholder,
-              },
-              props.className,
-            )}
-          >
-            {children}
-          </components.SelectContainer>
-        </>
+        <components.SelectContainer
+          {...props}
+          className={props.cx(
+            {
+              '--is-focused': props.isFocused,
+              '--has-value': props.hasValue,
+              '--has-placeholder': props.selectProps.placeholder,
+              '--has-error': props.selectProps.hasError?.length,
+            },
+            props.className,
+          )}
+        >
+          {children}
+        </components.SelectContainer>
       )}
     </ReactSelect>
   );
@@ -78,18 +76,21 @@ export const selectTheme = (theme) => ({
 });
 
 export const customSelectStyles = {
-  control: (styles, state) => ({
-    ...styles,
-    backgroundColor:
-      state.isFocused || state.isDisabled ? '#fff !important' : null,
-    boxShadow: state.isDisabled
-      ? 'inset 0 0 0 1px #E4E8EC !important'
-      : state.isFocused
-      ? 'inset 0 0 0 2px #349ef4 !important'
-      : null,
-    outline: 0,
-    borderRadius: '6px',
-  }),
+  control: (styles, state) => {
+    console.log(state);
+    return {
+      ...styles,
+      backgroundColor:
+        state.isFocused || state.isDisabled ? '#fff !important' : null,
+      boxShadow: state.isDisabled
+        ? 'inset 0 0 0 1px #E4E8EC !important'
+        : state.isFocused
+        ? 'inset 0 0 0 2px #349ef4 !important'
+        : null,
+      outline: 0,
+      borderRadius: '6px',
+    };
+  },
   input: (styles, state) => ({
     ...styles,
     padding: 0,

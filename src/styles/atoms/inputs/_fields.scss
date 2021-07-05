@@ -160,7 +160,10 @@
 //*// STATES
 
 //// Error (State of input)
-.q.field .input.error {
+.q.field .input.error,
+.q.field
+  .react-select-container.react-select--has-error
+  .react-select__control {
   background-color: $ballet;
   caret-color: $rose;
 
@@ -180,6 +183,14 @@
     &::after {
       filter: none !important;
     }
+  }
+}
+
+.q.field .react-select-container.react-select--has-error + input + label {
+  color: $candy !important;
+
+  &::after {
+    filter: none !important;
   }
 }
 

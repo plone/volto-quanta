@@ -251,6 +251,7 @@ class SelectWidget extends Component {
             name={id}
             placeholder={this.props.placeholder || null}
             isDisabled={disabled}
+            hasError={this.props.error || null}
             className="q react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}
