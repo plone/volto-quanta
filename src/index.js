@@ -30,7 +30,7 @@ export default (config) => {
 export function overrideDefaultControls(config) {
   config.widgets.default = Input;
   config.widgets.widget.textarea = TextArea;
-  config.widgets.choices = SelectWidget;
+  // config.widgets.choices = SelectWidget;
 
   return config;
 }

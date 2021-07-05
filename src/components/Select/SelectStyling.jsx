@@ -9,6 +9,33 @@ import checkSVG from '@plone/volto/icons/check.svg';
 
 const ReactSelect = loadable.lib(() => import('react-select'));
 
+export const SelectContainer = ({ children, ...props }) => {
+  return (
+    <ReactSelect>
+      {({ components }) => (
+        <>
+          {console.log(props)}
+          <components.SelectContainer
+            {...props}
+            className={props.cx(
+              {
+                '--is-disabled': props.isDisabled,
+                '--is-rtl': props.isRtl,
+                '--is-focused': props.isFocused,
+                '--has-value': props.hasValue,
+                '--has-placeholder': props.selectProps.placeholder,
+              },
+              props.className,
+            )}
+          >
+            {children}
+          </components.SelectContainer>
+        </>
+      )}
+    </ReactSelect>
+  );
+};
+
 export const Option = (props) => {
   return (
     <ReactSelect>

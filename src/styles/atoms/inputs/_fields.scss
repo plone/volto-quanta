@@ -60,7 +60,10 @@
 
   &:active + label,
   &:focus + label,
-  &:not(:placeholder-shown) + label {
+  &:not(:placeholder-shown) + label,
+  &.react-select--has-placeholder + input + label,
+  &.react-select--is-focused + input + label,
+  &.react-select--has-value + input + label {
     // Remove important if we get rid of semanticUI field
     margin-top: -30px !important;
     margin-left: -12px !important;
