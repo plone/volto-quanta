@@ -19,8 +19,6 @@ export const SelectContainer = ({ children, ...props }) => {
             {...props}
             className={props.cx(
               {
-                '--is-disabled': props.isDisabled,
-                '--is-rtl': props.isRtl,
                 '--is-focused': props.isFocused,
                 '--has-value': props.hasValue,
                 '--has-placeholder': props.selectProps.placeholder,
@@ -82,9 +80,15 @@ export const selectTheme = (theme) => ({
 export const customSelectStyles = {
   control: (styles, state) => ({
     ...styles,
-    backgroundColor: state.isFocused ? '#fff !important' : null,
-    boxShadow: state.isFocused ? 'inset 0 0 0 3px #349ef4 !important' : null,
+    backgroundColor:
+      state.isFocused || state.isDisabled ? '#fff !important' : null,
+    boxShadow: state.isDisabled
+      ? 'inset 0 0 0 1px #E4E8EC !important'
+      : state.isFocused
+      ? 'inset 0 0 0 2px #349ef4 !important'
+      : null,
     outline: 0,
+    borderRadius: '6px',
   }),
   input: (styles, state) => ({
     ...styles,

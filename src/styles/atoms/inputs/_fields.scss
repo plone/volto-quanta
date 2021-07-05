@@ -21,7 +21,7 @@
   &:active,
   &:focus {
     background-color: $air;
-    box-shadow: inset 0 0 0 3px $cobalt;
+    box-shadow: inset 0 0 0 2px $cobalt;
     outline: 0;
   }
 
@@ -171,7 +171,7 @@
   &:active,
   &:focus {
     background-color: $air;
-    box-shadow: inset 0 0 0 3px $rose;
+    box-shadow: inset 0 0 0 2px $rose;
   }
 
   + label {
@@ -240,10 +240,13 @@ select.q.input {
 }
 
 //// Disabled
-.q.input[disabled] {
+.q.input[disabled],
+.q.react-select-container.react-select--is-disabled {
   background-color: $air !important;
+  border-radius: 6px;
   box-shadow: inset 0 0 0 1px $snow;
   color: $smoke !important;
+  pointer-events: none;
 
   + label {
     color: $smoke !important;
@@ -259,6 +262,10 @@ select.q.input {
   &::placeholder {
     opacity: 0;
   }
+}
+
+.q.react-select-container.react-select--is-disabled + input + label {
+  color: $smoke !important;
 }
 
 //// Readonly

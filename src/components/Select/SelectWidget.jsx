@@ -216,14 +216,14 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, onChange, required } = this.props;
+    const { id, choices, disabled, onChange, required } = this.props;
 
     return (
       <FormFieldWrapper {...this.props}>
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
-              isDisabled={this.props.isDisabled}
+              isDisabled={disabled}
               className="q react-select-container"
               classNamePrefix="react-select"
               options={this.props.choices || []}
@@ -250,7 +250,7 @@ class SelectWidget extends Component {
             key={this.props.choices}
             name={id}
             placeholder={this.props.placeholder || null}
-            isDisabled={this.props.isDisabled}
+            isDisabled={disabled}
             className="q react-select-container"
             classNamePrefix="react-select"
             isMulti={id === 'roles' || id === 'groups'}

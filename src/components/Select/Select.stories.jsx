@@ -139,8 +139,7 @@ export const Disabled = Select.bind({});
 Disabled.args = {
   id: 'field-disabled',
   title: 'Disabled field title',
-  description: 'Optional help text',
-  placeholder: 'Select something…',
+  description: 'This select field is disabled',
   disabled: true,
 };
 
