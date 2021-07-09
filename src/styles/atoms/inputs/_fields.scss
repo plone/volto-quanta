@@ -42,6 +42,15 @@
   }
 }
 
+// The multi (tokenized) have less padding
+.q .react-select--is-multi .react-select__control {
+  padding: 9px;
+}
+
+.q .react-select--is-multi .react-select__indicator {
+  padding: 0;
+}
+
 //// Label
 .q.input,
 .q.react-select-container {

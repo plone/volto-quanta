@@ -5,7 +5,7 @@ import { Icon } from '@plone/volto/components';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
-import checkSVG from '@plone/volto/icons/check.svg';
+import clearSVG from '@plone/volto/icons/clear.svg';
 
 const ReactSelect = loadable.lib(() => import('react-select'));
 
@@ -21,12 +21,37 @@ export const SelectContainer = ({ children, ...props }) => {
               '--has-value': props.hasValue,
               '--has-placeholder': props.selectProps.placeholder,
               '--has-error': props.selectProps.hasError?.length,
+              '--is-multi': props.selectProps.isMulti,
             },
             props.className,
           )}
         >
           {children}
         </components.SelectContainer>
+      )}
+    </ReactSelect>
+  );
+};
+
+export const MultiValueRemove = (props) => {
+  return (
+    <ReactSelect>
+      {({ components }) => (
+        <components.MultiValueRemove {...props}>
+          <Icon name={clearSVG} size="12px" color="#4A5B68" />
+        </components.MultiValueRemove>
+      )}
+    </ReactSelect>
+  );
+};
+
+export const ClearIndicator = (props) => {
+  return (
+    <ReactSelect>
+      {({ components }) => (
+        <components.ClearIndicator {...props}>
+          <Icon name={clearSVG} size="12px" color="#4A5B68" />
+        </components.ClearIndicator>
       )}
     </ReactSelect>
   );
@@ -77,7 +102,6 @@ export const selectTheme = (theme) => ({
 
 export const customSelectStyles = {
   control: (styles, state) => {
-    console.log(state);
     return {
       ...styles,
       backgroundColor:
@@ -93,8 +117,7 @@ export const customSelectStyles = {
   },
   input: (styles, state) => ({
     ...styles,
-    padding: 0,
-    margin: 0,
+    marginLeft: '3px',
   }),
   menu: (styles, state) => ({
     ...styles,
@@ -137,5 +160,29 @@ export const customSelectStyles = {
     svg: {
       flex: '0 0 auto',
     },
+  }),
+  multiValue: (base) => ({
+    ...base,
+    border: '1px solid #C3CDD5',
+    borderRadius: '40px',
+    backgroundColor: '#fff',
+  }),
+  multiValueLabel: (base) => ({
+    ...base,
+    borderRadius: '40px',
+    backgroundColor: '#fff',
+    paddingLeft: '9px',
+  }),
+  multiValueRemove: (base) => ({
+    ...base,
+    ':hover': {
+      cursor: 'pointer',
+      border: 'none',
+      backgroundColor: 'transparent',
+    },
+  }),
+  clearIndicator: (base) => ({
+    ...base,
+    cursor: 'pointer',
   }),
 };

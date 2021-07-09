@@ -4,6 +4,7 @@ import DSSelect from './components/DesignSystem/Select';
 import Input from './components/Input/Input';
 import TextArea from './components/TextArea/TextArea';
 import SelectWidget from './components/Select/SelectWidget';
+import ArrayWidget from './components/Select/ArrayWidget';
 
 import './styles/quanta.scss';
 
@@ -30,7 +31,8 @@ export default (config) => {
 export function overrideDefaultControls(config) {
   config.widgets.default = Input;
   config.widgets.widget.textarea = TextArea;
-  // config.widgets.choices = SelectWidget;
+  config.widgets.choices = SelectWidget;
+  config.widgets.type.array = ArrayWidget;
 
   return config;
 }

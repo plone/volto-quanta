@@ -1,5 +1,12 @@
 import React from 'react';
-import { SelectWidgetComponent as SelectComponent } from './SelectWidget';
+import { SelectWidgetComponent } from './SelectWidget';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import Wrapper from '@package/storybook';
+
+const SelectComponent = injectLazyLibs([
+  'reactSelect',
+  'reactSelectAsyncPaginate',
+])(SelectWidgetComponent);
 
 const Select = (args) => {
   const [value, setValue] = React.useState(args.value ?? '');
@@ -8,15 +15,18 @@ const Select = (args) => {
     setValue(value);
   };
 
-  return <SelectComponent {...args} onChange={onChange} value={value} />;
+  return (
+    <Wrapper>
+      <SelectComponent {...args} onChange={onChange} value={value} />
+    </Wrapper>
+  );
 };
 
 export const Default = Select.bind({});
 Default.args = {
-  id: 'field-empty',
-  title: 'field 1 title',
-  description: 'Optional help text',
-  placeholder: 'Type something…',
+  id: 'field-default',
+  title: 'Default select field',
+  description: 'Simple select with closed list of options',
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -26,10 +36,10 @@ Default.args = {
 
 export const Required = Select.bind({});
 Required.args = {
-  id: 'field-empty',
-  title: 'field 1 title',
-  description: 'Optional help text',
-  placeholder: 'Type something…',
+  id: 'field-required',
+  title: 'Required select field',
+  description: 'Required, with placeholder',
+  placeholder: 'Select a list of options…',
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -41,24 +51,24 @@ Required.args = {
 export const Filled = Select.bind({});
 Filled.args = {
   id: 'field-filled',
-  title: 'Filled field title',
-  description: 'Optional help text',
+  title: 'Filled select field',
+  description: 'Pre-filled with a simple value (string)',
+  placeholder: 'Select a list of options…',
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
     ['FooBar', 'FooBar'],
   ],
   value: 'Foo',
-  placeholder: 'Type something…',
   required: true,
 };
 
 export const Errored = Select.bind({});
 Errored.args = {
   id: 'field-errored',
-  title: 'Errored field title',
-  description: 'Optional help text',
-  placeholder: 'Type something…',
+  title: 'Errored select field',
+  description: 'Errored filled select field with an simple value string',
+  placeholder: 'Select a list of options…',
   // Simplest example in Plone - a "hardcoded, hand made" vocab using SimpleVocabulary/SimpleTerm
   // allow_discussion = schema.Choice(
   //     title=_(u'Allow discussion'),
@@ -82,9 +92,9 @@ Errored.args = {
 
 export const NoPlaceholder = Select.bind({});
 NoPlaceholder.args = {
-  id: 'field-without-novalue',
+  id: 'field-without-no-placeholder',
   title: 'Field title',
-  description: 'This field has no value option',
+  description: 'This field has no placeholder',
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -97,8 +107,8 @@ export const WithoutNoValueOption = Select.bind({});
 WithoutNoValueOption.args = {
   id: 'field-without-novalue',
   title: 'Field title',
-  description: 'This field has no value option',
-  placeholder: 'Select something…',
+  description: "This field has no 'no-value' option",
+  placeholder: 'Select a list of options…',
   choices: [
     ['Foo', 'Foo'],
     ['Bar', 'Bar'],
@@ -132,7 +142,7 @@ VocabularyBased.args = {
     { label: 'Catala', value: 'ca' },
   ],
   required: true,
-  vocabBaseUrl: 'https://anapivocabularyURL',
+  vocabulary: { '@id': 'https://anapivocabularyURL' },
 };
 
 export const Disabled = Select.bind({});

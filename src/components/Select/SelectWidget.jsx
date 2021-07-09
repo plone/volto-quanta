@@ -10,7 +10,6 @@ import { compose } from 'redux';
 import { map, intersection } from 'lodash';
 import { defineMessages, injectIntl } from 'react-intl';
 import {
-  getBoolean,
   getVocabFromHint,
   getVocabFromField,
   getVocabFromItems,
@@ -20,17 +19,13 @@ import { getVocabulary, getVocabularyTokenTitle } from '@plone/volto/actions';
 import { normalizeValue } from './SelectUtils';
 
 import {
-  SelectContainer,
-  Option,
-  DropdownIndicator,
-  selectTheme,
   customSelectStyles,
+  DropdownIndicator,
+  Option,
+  SelectContainer,
+  selectTheme,
 } from './SelectStyling';
-
-// const Select = loadable(() => import('react-select'));
-// const AsyncPaginate = loadable(() => import('react-select-async-paginate'));
-import Select from 'react-select';
-import AsyncPaginate from 'react-select-async-paginate';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   default: {
@@ -216,13 +211,20 @@ class SelectWidget extends Component {
    * @returns {string} Markup for the component.
    */
   render() {
-    const { id, choices, disabled, onChange, required } = this.props;
+    const { id, choices, onChange, required } = this.props;
+    // Make sure that both disabled and isDisabled (from the DX layout feat work)
+    const disabled = this.props.disabled || this.props.isDisabled;
+    const Select = this.props.reactSelect.default;
+    const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
+    console.log(this.props);
 
     return (
       <FormFieldWrapper {...this.props}>
         {this.props.vocabBaseUrl ? (
           <>
             <AsyncPaginate
+              aria-labelledby={`field-label-${id}`}
+              aria-describedby={`field-hint-${id}`}
               isDisabled={disabled}
               className="q react-select-container"
               classNamePrefix="react-select"
@@ -289,7 +291,7 @@ class SelectWidget extends Component {
           />
         )}
         {/* react-select does not support required, so we fake it here with a
-            hidden input so it behaves like the others */}
+            hidden input so it behaves like the other inputs */}
         <input
           className="q input"
           tabIndex={-1}
@@ -307,6 +309,7 @@ export const SelectWidgetComponent = injectIntl(SelectWidget);
 
 export default compose(
   injectIntl,
+  injectLazyLibs(['reactSelect', 'reactSelectAsyncPaginate']),
   connect(
     (state, props) => {
       const vocabBaseUrl = !props.choices
