@@ -6,7 +6,7 @@ Quanta is quite more than some aesthetics changes in Pastanaga UI, it comprises 
 
 Quanta will also address some known Pastanaga UI issues.
 
-**This package is experimental and in their first stages of development. Its form, internal structure and features might change without further notice. This will be true since it's noted otherwise.**
+**This package is experimental and in their first stages of development. Its form, internal structure and features might change without further notice. This will be true unless it's noted otherwise.**
 
 ## Rationale
 
