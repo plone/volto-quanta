@@ -8,6 +8,12 @@ import SelectWidget from './SelectWidget';
 expect.extend(toHaveNoViolations);
 const mockStore = configureStore();
 
+jest.mock('@plone/volto/helpers/Loadable/Loadable');
+beforeAll(
+  async () =>
+    await require('@plone/volto/helpers/Loadable/Loadable').__setLoadables(),
+);
+
 it('should demonstrate this matcher`s usage with react testing library', async () => {
   const store = mockStore({
     intl: {

@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import { isObject, intersection } from 'lodash';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 import {
   getVocabFromHint,
@@ -28,6 +27,7 @@ import {
   SelectContainer,
   selectTheme,
 } from './SelectStyling';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 
 const messages = defineMessages({
   select: {

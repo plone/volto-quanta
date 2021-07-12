@@ -216,7 +216,6 @@ class SelectWidget extends Component {
     const disabled = this.props.disabled || this.props.isDisabled;
     const Select = this.props.reactSelect.default;
     const AsyncPaginate = this.props.reactSelectAsyncPaginate.AsyncPaginate;
-    console.log(this.props);
 
     return (
       <FormFieldWrapper {...this.props}>

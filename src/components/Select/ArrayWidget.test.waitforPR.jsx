@@ -1,8 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-intl-redux';
-import { waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 
 import ArrayWidget from './ArrayWidget';
 
@@ -27,7 +26,7 @@ test('renders an array widget component', async () => {
       },
     },
   });
-  const component = renderer.create(
+  const { container } = render(
     <Provider store={store}>
       <ArrayWidget
         id="my-field"
@@ -39,5 +38,5 @@ test('renders an array widget component', async () => {
     </Provider>,
   );
   await waitFor(() => {});
-  expect(component.toJSON()).toMatchSnapshot();
+  expect(container).toMatchSnapshot();
 });

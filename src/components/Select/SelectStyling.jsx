@@ -117,6 +117,8 @@ export const customSelectStyles = {
   },
   input: (styles, state) => ({
     ...styles,
+    padding: 0,
+    margin: 0,
     marginLeft: '3px',
   }),
   menu: (styles, state) => ({
