@@ -1,10 +1,11 @@
 import React from 'react';
+import cx from 'classnames';
 
 const FieldWrapper = (props) => {
   const { children, description, disabled, error, fieldSet, id, title } = props;
 
   return (
-    <div className="q field">
+    <div className={cx('q field', `field-wrapper-${id}`)}>
       {children}
       <label
         className="q label"
