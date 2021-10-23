@@ -42,13 +42,19 @@
   }
 }
 
-// The multi (tokenized) have less padding
-.q .react-select--is-multi .react-select__control {
-  padding: 9px;
-}
+.q .react-select-container {
+  // We force the height of the value container, to maintain the height
+  .react-select__value-container {
+    height: 29px;
+  }
+  // The multi (tokenized) have less padding to maintain the height
+  .react-select__control {
+    padding: 8px;
+  }
 
-.q .react-select--is-multi .react-select__indicator {
-  padding: 0;
+  .react-select--is-multi .react-select__indicator {
+    padding: 0;
+  }
 }
 
 //// Label
