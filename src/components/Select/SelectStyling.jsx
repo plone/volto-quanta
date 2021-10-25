@@ -168,12 +168,13 @@ export const customSelectStyles = {
     border: '1px solid #C3CDD5',
     borderRadius: '40px',
     backgroundColor: '#fff',
+    margin: '0 4px 0 0',
   }),
   multiValueLabel: (base) => ({
     ...base,
     borderRadius: '40px',
     backgroundColor: '#fff',
-    paddingLeft: '9px',
+    padding: '5px 3px 5px 9px',
   }),
   multiValueRemove: (base) => ({
     ...base,
