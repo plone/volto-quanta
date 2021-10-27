@@ -58,13 +58,45 @@ These are the main goals for the Quanta implementation.
 
 - Full Quanta system
 
-### Semantic UI
+## Semantic UI
 
 We cannot improve SemanticUI (at least not easily), to include the missing accessibility features. Using SemanticUI in Volto in the beginning was good as we have a good swiss knife toolkit and components pool to quickly use it in a project or in Volto itself. However, it's huge (both in JS and in CSS) and the resultant bundle size is quite big because of it.
 
 SemanticUI theming engine proved to be good but overwhelming for newbies. Even experienced frontend developers end up in relying in good old plain CSS using the `custom.overrides` facility to theme their projects.
 
+## SemanticUI components used in core
 
+- Button (57)
+- Container (46)
+- Segment (37)
+- Form (28)
+- Grid (23)
+- Input (21)
+- Table (18)
+- Message (14)
+- Header (12)
+- Icon (11)
+- Image (10)
+- Label (10)
+- Dropdown (9)
+- Menu (8)
+- List (8)
+- Accordion (8)
+- Dimmer (7)
+- Loader (6)
+- Popup (5)
+- Checkbox (5)
+- Confirm (5)
+- Modal (4)
+- Breadcrumb (3)
+- Tab (3)
+- Radio (3)
+- Pagination (2)
+- Embed (2)
+- Divider (2)
+- TextArea (2)
+- Comment (1)
+- GridColumn (1)
 
 ## Roadmap
 
@@ -75,7 +107,3 @@ SemanticUI theming engine proved to be good but overwhelming for newbies. Even e
 - Add menu
 - Add block menu
 - Sidebar UX/UI
-
-## Experimental branch
-
-There was some work done experimenting with using a `CSS-in-JS` approach using `emotion` and `theme-ui`. It has been dropped for now, but you can find it in the branch: theme-ui
