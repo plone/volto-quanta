@@ -21,44 +21,44 @@ $denim:    hsl($temperature-base, 90%, 7%);
 $snow:     hsl($temperature-base, 17%, 92%);
 $smoke:    hsl($temperature-base, 17%, 85%);
 $silver:   hsl($temperature-base, 17%, 73%);
-$dolphin:  hsl($temperature-base, 17%, 55%); 
+$dolphin:  hsl($temperature-base, 17%, 55%);
 $pigeon:   hsl($temperature-base, 17%, 43%); //mid gray
 $iron:     hsl($temperature-base, 17%, 31%);
 
 $arctic:   hsl($temperature-base, 90%, 96%);
 $sky:      hsl($temperature-base, 90%, 91%);
 $azure:    hsl($temperature-base, 90%, 80%);
-$cobalt:   hsl($temperature-base, 90%, 58%); 
+$cobalt:   hsl($temperature-base, 90%, 58%);
 $sapphire: hsl($temperature-base, 90%, 46%);
 $royal:    hsl($temperature-base, 90%, 35%);
 
-$ballet:   hsl($temperature-base + ($s-rotate/1), 90%, 95%);
-$flamingo: hsl($temperature-base + ($s-rotate/1), 90%, 89%);
-$poppy:    hsl($temperature-base + ($s-rotate/1), 90%, 78%);
-$rose:     hsl($temperature-base + ($s-rotate/1), 90%, 59%); 
-$candy:    hsl($temperature-base + ($s-rotate/1), 90%, 43%);
-$wine:     hsl($temperature-base + ($s-rotate/1), 90%, 35%);
+$ballet:   hsl($temperature-base + (calc($s-rotate / 1)), 90%, 95%);
+$flamingo: hsl($temperature-base + (calc($s-rotate / 1)), 90%, 89%);
+$poppy:    hsl($temperature-base + (calc($s-rotate / 1)), 90%, 78%);
+$rose:     hsl($temperature-base + (calc($s-rotate / 1)), 90%, 59%);
+$candy:    hsl($temperature-base + (calc($s-rotate / 1)), 90%, 43%);
+$wine:     hsl($temperature-base + (calc($s-rotate / 1)), 90%, 35%);
 
-//$cream:    hsl(#{$temperature-base - ($s-rotate/1)}, 90%, 90%);
-$banana:   hsl($temperature-base - ($s-rotate/1), 90%, 83%);
-//$lemon:    hsl(#{$temperature-base - ($s-rotate/1)}, 90%, 65%);
-$gold:     hsl($temperature-base - ($s-rotate/1), 90%, 37%); 
-//$dijon:    hsl(#{$temperature-base - ($s-rotate/1), 90%, 30%);
-//$bronze:   hsl(#{$temperature-base - ($s-rotate/1), 90%, 22%);
+//$cream:    hsl(#{$temperature-base - (calc($s-rotate / 1))}, 90%, 90%);
+$banana:   hsl($temperature-base - (calc($s-rotate / 1)), 90%, 83%);
+//$lemon:    hsl(#{$temperature-base - (calc($s-rotate / 1))}, 90%, 65%);
+$gold:     hsl($temperature-base - (calc($s-rotate / 1)), 90%, 37%);
+//$dijon:    hsl(#{$temperature-base - (calc($s-rotate / 1)), 90%, 30%);
+//$bronze:   hsl(#{$temperature-base - (calc($s-rotate / 1)), 90%, 22%);
 
 //$daiquiri: hsl(#{$temperature-base - ($s-rotate*3/5)}, 60%, 92%);
-$mint:     hsl($temperature-base - ($s-rotate*(3/5)), 60%, 84%);
+$mint:     hsl($temperature-base - ($s-rotate*calc(3 / 5)), 60%, 84%);
 //$celery:   hsl(#{$temperature-base - ($s-rotate*3/5)}, 60%, 68%);
-$neon:     hsl($temperature-base - ($s-rotate*(3/5)), 60%, 41%); 
+$neon:     hsl($temperature-base - ($s-rotate*calc(3 / 5)), 60%, 41%);
 //$emerald:  hsl(#{$temperature-base - ($s-rotate*3/5)}, 60%, 33%);
-$turtle:   hsl($temperature-base - ($s-rotate*(3/5)), 60%, 25%);
+$turtle:   hsl($temperature-base - ($s-rotate*calc(3 / 5)), 60%, 25%);
 
-//$aqua:     hsl(#{$temperature-base - ($s-rotate/5)}, 60%, 90%);
-$spa:      hsl($temperature-base - ($s-rotate/5), 60%, 83%);
-$tiffany:  hsl($temperature-base - ($s-rotate/5), 60%, 66%);
-$turquoise:hsl($temperature-base - ($s-rotate/5), 60%, 40%); 
-//$peacock:  hsl(#{$temperature-base - ($s-rotate/5)}, 60%, 31%);
-$puya:     hsl($temperature-base - ($s-rotate/5), 60%, 23%);
+//$aqua:     hsl(#{$temperature-base - (calc($s-rotate / 5))}, 60%, 90%);
+$spa:      hsl($temperature-base - (calc($s-rotate / 5)), 60%, 83%);
+$tiffany:  hsl($temperature-base - (calc($s-rotate / 5)), 60%, 66%);
+$turquoise:hsl($temperature-base - (calc($s-rotate / 5)), 60%, 40%);
+//$peacock:  hsl(#{$temperature-base - (calc($s-rotate / 5))}, 60%, 31%);
+$puya:     hsl($temperature-base - (calc($s-rotate / 5)), 60%, 23%);
 
 
 :root {
@@ -127,8 +127,8 @@ $a5:    1;
 
 //*// RHYTHM //*//
 $rhythm-null: 0;                    //0
-$rhythm-tiny: $lenght-base/4;       //3
-$rhythm-small: $lenght-base/2;      //6
+$rhythm-tiny: calc($lenght-base / 4);       //3
+$rhythm-small: calc($lenght-base / 2);      //6
 $rhythm-medium: $lenght-base;       //12
 $rhythm-large: $lenght-base*1.5;    //18
 $rhythm-huge: $lenght-base*2.5;     //30
@@ -137,18 +137,18 @@ $rhythm-colossal: $lenght-base*10;  //120
 
 //*// ELEVATIONS //*//
 $litho:    $rhythm-null $rhythm-null $rhythm-null rgba($denim, $a0);
-$tropo:    $rhythm-null $rhythm-tiny/2 $rhythm-tiny rgba($denim, $a1), $rhythm-null $rhythm-tiny/2 $rhythm-tiny rgba($denim, $a1);
-$meso:     $rhythm-null $rhythm-small/2 $rhythm-small rgba($denim, $a1), $rhythm-null $rhythm-small/2 $rhythm-small rgba($denim, $a2);
-$exo:      $rhythm-null $rhythm-medium/2 $rhythm-medium rgba($denim, $a1), $rhythm-null $rhythm-large/2 $rhythm-large rgba($denim, $a3);
+$tropo:    $rhythm-null calc($rhythm-tiny / 2) $rhythm-tiny rgba($denim, $a1), $rhythm-null calc($rhythm-tiny / 2) $rhythm-tiny rgba($denim, $a1);
+$meso:     $rhythm-null calc($rhythm-small/2) $rhythm-small rgba($denim, $a1), $rhythm-null calc($rhythm-small/2) $rhythm-small rgba($denim, $a2);
+$exo:      $rhythm-null calc($rhythm-medium/2) $rhythm-medium rgba($denim, $a1), $rhythm-null calc($rhythm-large/2) $rhythm-large rgba($denim, $a3);
 $fog:      $rhythm-huge;
 $focus:    $rhythm-null $rhythm-null $rhythm-null $rhythm-tiny rgba($cobalt, $a4);
 
 //*// FONT SIZES //*//
-$s:      $mass-base - ($mass-base/7);     //12
+$s:      $mass-base - (calc($mass-base/7));     //12
 $m:      $mass-base;                    //14
-$l:      $mass-base + $mass-base/7;     //16
-$xl:     $mass-base + $mass-base/7*3;   //20
-$xxl:    $mass-base + $mass-base/7*5;   //24
+$l:      $mass-base + calc($mass-base/7);     //16
+$xl:     $mass-base + calc($mass-base/7*3);   //20
+$xxl:    $mass-base + calc($mass-base/7*5);   //24
 
 //*// FONT WEIGHTS and STYLES //*//
 $regular:   400;
@@ -166,7 +166,7 @@ $line-medium:   1.5;
     font-family: Metropolis;
     src: local("Metropolis Bold"),
          local("Metropolis-Bold"),
-         url(../fonts/metropolis/Metropolis-Bold.otf);
+         url(../../fonts/metropolis/Metropolis-Bold.otf);
     font-weight: 700;
     font-style: normal;
 }
@@ -174,7 +174,7 @@ $line-medium:   1.5;
     font-family: Metropolis;
     src: local("Metropolis Medium"),
          local("Metropolis-Medium"),
-         url(../fonts/metropolis/Metropolis-Medium.otf);
+         url(../../fonts/metropolis/Metropolis-Medium.otf);
     font-weight: 500;
     font-style: normal;
 }
@@ -182,7 +182,7 @@ $line-medium:   1.5;
     font-family: Metropolis;
     src: local("Metropolis Regular"),
          local("Metropolis-Regular"),
-         url(../fonts/metropolis/Metropolis-Regular.otf);
+         url(../../fonts/metropolis/Metropolis-Regular.otf);
     font-weight: 400;
     font-style: normal;
 }
@@ -190,7 +190,7 @@ $line-medium:   1.5;
     font-family: "Anonymous Pro";
     src: local("Anonymous Pro Bold"),
          local("AnonymousPro-Bold"),
-         url(../fonts/AnonymousPro/AnonymousPro-Bold.ttf);
+         url(../../fonts/AnonymousPro/AnonymousPro-Bold.ttf);
     font-weight: 700;
     font-style: normal;
 }
@@ -198,7 +198,7 @@ $line-medium:   1.5;
     font-family: "Anonymous Pro";
     src: local("Anonymous Pro Regular"),
          local("AnonymousPro-Regular"),
-         url(../fonts/AnonymousPro/AnonymousPro-Regular.ttf);
+         url(../../fonts/AnonymousPro/AnonymousPro-Regular.ttf);
     font-weight: 400;
     font-style: normal;
 }
@@ -211,8 +211,8 @@ $title:     $sans;
 
 //*// RADII //*//
 $radii-null:    0;
-$radii-small:   $lenght-base/4;     //3
-$radii-medium:  $lenght-base/2;     //6
+$radii-small:   calc($lenght-base / 4);     //3
+$radii-medium:  calc($lenght-base / 2);     //6
 $radii-large:   $lenght-base*1.5;   //18
 $radii-full:    $lenght-base*20;    //circle
 
