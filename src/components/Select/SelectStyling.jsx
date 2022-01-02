@@ -1,6 +1,6 @@
 import React from 'react';
 import loadable from '@loadable/component';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable';
 
 import { Icon } from '@plone/volto/components';
 
