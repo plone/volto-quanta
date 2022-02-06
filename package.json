@@ -37,9 +37,22 @@
     "plugins": [
       "stylelint-prettier"
     ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      },
+      {
+        "files": [
+          "**/*.overrides"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ],
     "rules": {
       "prettier/prettier": true,
-      "declaration-block-single-line-max-declarations": 5,
       "rule-empty-line-before": [
         "always-multi-line",
         {
