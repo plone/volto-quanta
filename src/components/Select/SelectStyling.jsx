@@ -1,14 +1,10 @@
 import React from 'react';
-import loadable from '@loadable/component';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable';
-
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
 import { Icon } from '@plone/volto/components';
 
 import downSVG from '@plone/volto/icons/down-key.svg';
 import upSVG from '@plone/volto/icons/up-key.svg';
 import clearSVG from '@plone/volto/icons/clear.svg';
-
-const ReactSelect = loadable.lib(() => import('react-select'));
 
 const height = 50; // The height of each option
 
@@ -59,87 +55,79 @@ export const SortableMultiValueLabel = injectLazyLibs([
   return <SortableComponent {...props} />;
 });
 
-export const SelectContainer = ({ children, ...props }) => {
-  return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.SelectContainer
-          {...props}
-          className={props.cx(
-            {
-              '--is-focused': props.isFocused,
-              '--has-value': props.hasValue,
-              '--has-placeholder': props.selectProps.placeholder,
-              '--has-error': props.selectProps.hasError?.length,
-              '--is-multi': props.selectProps.isMulti,
-            },
-            props.className,
-          )}
-        >
-          {children}
-        </components.SelectContainer>
-      )}
-    </ReactSelect>
-  );
-};
+export const SelectContainer = injectLazyLibs('reactSelect')(
+  ({ children, ...props }) => {
+    const { SelectContainer } = props.reactSelect.components;
+    return (
+      <SelectContainer
+        {...props}
+        className={props.cx(
+          {
+            '--is-focused': props.isFocused,
+            '--has-value': props.hasValue,
+            '--has-placeholder': props.selectProps.placeholder,
+            '--has-error': props.selectProps.hasError?.length,
+            '--is-multi': props.selectProps.isMulti,
+          },
+          props.className,
+        )}
+      >
+        {children}
+      </SelectContainer>
+    );
+  },
+);
 
-export const MultiValueRemove = (props) => {
+export const MultiValueRemove = injectLazyLibs('reactSelect')((props) => {
+  const { MultiValueRemove } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.MultiValueRemove {...props}>
-          <Icon name={clearSVG} size="12px" color="#4A5B68" />
-        </components.MultiValueRemove>
-      )}
-    </ReactSelect>
+    <MultiValueRemove {...props}>
+      <Icon name={clearSVG} size="12px" color="#4A5B68" />
+    </MultiValueRemove>
   );
-};
+});
 
-export const ClearIndicator = (props) => {
+export const ClearIndicator = injectLazyLibs('reactSelect')((props) => {
+  const { ClearIndicator } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.ClearIndicator {...props}>
-          <Icon name={clearSVG} size="12px" color="#4A5B68" />
-        </components.ClearIndicator>
-      )}
-    </ReactSelect>
+    <ClearIndicator {...props}>
+      <Icon name={clearSVG} size="12px" color="#4A5B68" />
+    </ClearIndicator>
   );
-};
+});
 
-export const Option = (props) => {
+export const Option = injectLazyLibs('reactSelect')((props) => {
+  const { Option } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.Option {...props}>
-          <div className="label">{props.label}</div>
-          {/* {props.isFocused && !props.isSelected && (
+    <Option {...props}>
+      <div className="label">{props.label}</div>
+      {/* {props.isFocused && !props.isSelected && (
             <Icon name={checkSVG} size="24px" color="#b8c6c8" />
           )}
           {props.isSelected && (
             <Icon name={checkSVG} size="24px" color="#007bc1" />
           )} */}
-        </components.Option>
-      )}
-    </ReactSelect>
+    </Option>
   );
-};
+});
 
-export const DropdownIndicator = (props) => {
+export const DropdownIndicator = injectLazyLibs('reactSelect')((props) => {
+  const { DropdownIndicator } = props.reactSelect.components;
   return (
-    <ReactSelect>
-      {({ components }) => (
-        <components.DropdownIndicator {...props}>
-          {props.selectProps.menuIsOpen ? (
-            <Icon name={upSVG} size="18px" color="#007bc1" />
-          ) : (
-            <Icon name={downSVG} size="18px" color="#007bc1" />
-          )}
-        </components.DropdownIndicator>
+    <DropdownIndicator {...props}>
+      {props.selectProps.menuIsOpen ? (
+        <Icon name={upSVG} size="18px" color="#007bc1" />
+      ) : (
+        <Icon name={downSVG} size="18px" color="#007bc1" />
       )}
-    </ReactSelect>
+    </DropdownIndicator>
   );
-};
+});
+
+export const Group = injectLazyLibs('reactSelect')((props) => {
+  const { Group } = props.reactSelect.components;
+  return <Group {...props}></Group>;
+});
 
 export const selectTheme = (theme) => ({
   ...theme,
