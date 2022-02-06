@@ -8,7 +8,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
+import { injectLazyLibs } from '@plone/volto/helpers/Loadable';
 import { find, isObject } from 'lodash';
 
 import {
@@ -246,7 +246,23 @@ class ArrayWidget extends Component {
     const { SortableContainer } = this.props.reactSortableHOC;
     const Select = this.props.reactSelect.default;
     const SortableSelect =
-      this.props?.choices && !getVocabFromHint(this.props)
+      // It will be only createable if the named vocabulary is in the widget definition
+      // (hint) like:
+      // list_field_voc_unconstrained = schema.List(
+      //     title=u"List field with values from vocabulary but not constrained to them.",
+      //     description=u"zope.schema.List",
+      //     value_type=schema.TextLine(),
+      //     required=False,
+      //     missing_value=[],
+      // )
+      // directives.widget(
+      //     "list_field_voc_unconstrained",
+      //     AjaxSelectFieldWidget,
+      //     vocabulary="plone.app.vocabularies.PortalTypes",
+      // )
+      this.props?.choices &&
+      !getVocabFromHint(this.props) &&
+      !this.props.creatable
         ? SortableContainer(Select)
         : SortableContainer(CreatableSelect);
 
