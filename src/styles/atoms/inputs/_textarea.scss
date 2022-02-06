@@ -3,7 +3,7 @@
   max-height: 240px;
   overflow-y: scroll;
   resize: vertical;
-  @extend .scroll.small;
+  @extend .scroll, .small;
 }
 
 div.q.textarea {
@@ -88,7 +88,7 @@ div.q.textarea {
 }
 
 .q.textarea.dim {
-  @extend .scroll.small;
+  @extend .scroll, .small;
   background-color: $air;
   box-shadow: inset 0 0 0 1px $silver;
 

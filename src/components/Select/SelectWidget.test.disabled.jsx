@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import { Provider } from 'react-intl-redux';
 import configureStore from 'redux-mock-store';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import SelectWidget from './SelectWidget';
+import { waitFor, render, screen } from '@testing-library/react';
 
 expect.extend(toHaveNoViolations);
 const mockStore = configureStore();
@@ -44,6 +44,7 @@ it('should demonstrate this matcher`s usage with react testing library', async (
     </Provider>,
   );
 
+  await waitFor(() => screen.getByText('Select Field'));
   const results = await axe(container);
 
   expect(results).toHaveNoViolations();

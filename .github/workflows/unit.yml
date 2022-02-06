@@ -34,8 +34,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Pull docker image
-        run: docker pull plone/volto-addon-ci
+      - name: Install yo and @plone/generator-volto
+        run: npm i -g yo @plone/generator-volto
 
-      - name: Run tests
-        run: docker run -i --rm -e NAMESPACE="${{env.NAMESPACE}}" -e DEPENDENCIES="${{env.DEPENDENCIES}}" -e GIT_NAME=${{env.GIT_NAME}} -e GIT_USER=${{env.GIT_USER}} -e GIT_BRANCH=${{env.GIT_BRANCH}} plone/volto-addon-ci test
+      - name: Setup addon testing environment
+        run: npx -p @plone/scripts addon clone https://github.com/${{env.GIT_USER}}/${{env.GIT_NAME}}.git --branch ${{env.GIT_BRANCH}}
+
+      # Unit tests
+      - name: Unit tests
+        run: cd addon-testing-project && yarn && CI=true yarn test

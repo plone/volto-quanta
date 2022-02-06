@@ -1,11 +1,12 @@
 import React from 'react';
 import { ArrayWidgetComponent } from './ArrayWidget';
 import { injectLazyLibs } from '@plone/volto/helpers/Loadable/Loadable';
-import Wrapper from '@package/storybook';
+import { RealStoreWrapper as Wrapper } from '@plone/volto/storybook';
 
 const ArrayComponent = injectLazyLibs([
+  'reactSelect',
   'reactSelectCreateable',
-  'reactSelectAsyncPaginate',
+  'reactSortableHOC',
 ])(ArrayWidgetComponent);
 
 const Array = (args) => {
